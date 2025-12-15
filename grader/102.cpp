@@ -3,10 +3,8 @@
 int main(void) {
     int n;
 
-    /* อ่านทีละจำนวนจนหมดอินพุต (EOF) */
     while (scanf("%d", &n) == 1) {
 
-        /* เลือกคำด้วย ternary ล้วน ๆ */
         const char *word =
             (n == 0) ? "zero"  :
             (n == 1) ? "one"   :
