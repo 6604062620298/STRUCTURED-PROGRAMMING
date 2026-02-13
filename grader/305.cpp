@@ -7,7 +7,7 @@ int main(){
     char key[100];
     char ans[100];
     scanf("%s", key);
-
+    
     int n;
     scanf("%d", &n);
     for(int i = 1; i <= n; i++){
