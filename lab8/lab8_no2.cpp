@@ -1,6 +1,7 @@
 #include <stdio.h>
 int checkscore(char std[],char keys[]);
 int checkClause(char std[][10],char keys[]);
+int checkHard(char std[8][10],char keys[]);
 int main() {
     int i,j;
     char ans[8][10]={
@@ -18,6 +19,7 @@ int main() {
         printf("std %d => %d\n", (i+1), checkscore(ans[i],keys));
 	}
     printf("answered question 1 correctly? = %d \n", checkClause(ans,keys));
+    printf("what question is hard = %d \n", checkHard(ans,keys)+1);
 }
 int checkscore(char std[],char keys[]){
     int score = 0   ;
@@ -36,4 +38,22 @@ int checkClause(char std[][10],char keys[]){
         }
     }
     return temp;
+}
+
+int checkHard(char std[8][10],char keys[]){
+    int n = 8;
+    int hard = 0;
+    for(int i = 0; i < 10; i++){
+        int correctCount = 0;
+        for(int j = 0; j < 8; j++){
+            if(std[j][i] == keys[i]){
+                correctCount++;
+            }
+        }
+        if(correctCount < n){
+            n = correctCount;
+            hard = i;
+        }
+    }
+    return hard;
 }
