@@ -22,18 +22,29 @@ int main() {
 	}
 }
 int checkValidPass(char *ps) {
-	int accepted=0;
+	int accepted = 0;
     int digital = 0;
+    int upper = 0;
 	int length = strlen(ps);
+    
+    if(length < 5 || length > 8){
+        accepted = 0;
+    }
+    if(ps[0] >= '0' && ps[0] <= '9'){
+        accepted = 0;
+    }
     for(int i = 0; ps[i] != '\0'; i++){
         if(ps[i] >= '0' && ps[i] <= '9'){
-            digital = 1;
-            break;
+            digital++;
+        }
+        if(ps[i] >= 'A' && ps[i] <= 'Z'){
+            upper++;
         }
     }
-    if(length == 5 && digital == 1){
+    if(digital >= 2 || upper >= 2){
         accepted = 1;
     }
+
 	return accepted;
 }
 
