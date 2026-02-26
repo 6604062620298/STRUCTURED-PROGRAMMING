@@ -25,6 +25,8 @@ int checkValidPass(char *ps) {
 	int accepted = 0;
     int digital = 0;
     int upper = 0;
+    char upperchar[10];
+    int upperindex = 0;
 	int length = strlen(ps);
     
     if(length < 5 || length > 8){
@@ -38,15 +40,65 @@ int checkValidPass(char *ps) {
             digital++;
         }
         if(ps[i] >= 'A' && ps[i] <= 'Z'){
+            for(int j = 0; j < upperindex; j++){
+                if(ps[i] == upperchar[j]){
+                    return 0;
+                }
+            }
+            upperchar[upperindex++] = ps[i];
             upper++;
         }
     }
-    if(digital >= 2 || upper >= 2){
+    if(digital >= 2 && upper >= 2){
         accepted = 1;
     }
 
 	return accepted;
 }
+// 4.1
+// int checkValidPass(char *ps) {
+// 	int accepted=0;
+//     int digital = 0;
+// 	int length = strlen(ps);
+//     for(int i = 0; ps[i] != '\0'; i++){
+//         if(ps[i] >= '0' && ps[i] <= '9'){
+//             digital = 1;
+//             break;
+//         }
+//     }
+//     if(length == 5 && digital == 1){
+//         accepted = 1;
+//     }
+// 	return accepted;
+// }
+
+// 4.2
+// int checkValidPass(char *ps) {
+// 	int accepted = 0;
+//     int digital = 0;
+//     int upper = 0;
+// 	int length = strlen(ps);
+    
+//     if(length < 5 || length > 8){
+//         accepted = 0;
+//     }
+//     if(ps[0] >= '0' && ps[0] <= '9'){
+//         accepted = 0;
+//     }
+//     for(int i = 0; ps[i] != '\0'; i++){
+//         if(ps[i] >= '0' && ps[i] <= '9'){
+//             digital++;
+//         }
+//         if(ps[i] >= 'A' && ps[i] <= 'Z'){
+//             upper++;
+//         }
+//     }
+//     if(digital >= 2 || upper >= 2){
+//         accepted = 1;
+//     }
+
+// 	return accepted;
+// }
 
 int checkLogin(char *login, char *passwd) {
 	if( !strcmp(login, "student1") && !strcmp(passwd, "mypass"))
