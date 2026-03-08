@@ -25,13 +25,15 @@ int main(){
     printf("password: ");
     scanf("%s",password);
     int found = 0;
+    int k = 0;
     for(int i = 0; i < 5; i++){
         if(strcmp(login, cs[i].stdACC.loginname)== 0 && strcmp(password,cs[i].stdACC.password)==0){
             found = 1;
+            k = i;
         }
     }
     if(found){
-        printf("Welcome");
+        printf("Welcome %s",cs[k].stdACC.loginname);
     }else{
         printf("Incorrect login or password");
     }
